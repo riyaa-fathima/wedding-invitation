@@ -1,0 +1,292 @@
+// .opening {
+//   min-height: 100vh;
+//   background: #f7f6f2;
+
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .envelope {
+//   position: relative;
+//   width: min(600px, 90vw);
+//   height: 400px;
+//   cursor: pointer;
+// }
+
+// /* Envelope body */
+
+// .envelope-body {
+//   position: absolute;
+//   inset: 0;
+
+//   background: #f2f0ea;
+//   border-radius: 4px;
+
+//   box-shadow:
+//     0 20px 40px rgba(0, 0, 0, 0.15),
+//     inset 0 1px 0 rgba(255, 255, 255, 0.8);
+// }
+
+// /* Bottom triangles */
+
+// .envelope-body::before,
+// .envelope-body::after {
+//   content: "";
+
+//   position: absolute;
+//   bottom: 0;
+
+//   width: 50%;
+//   height: 65%;
+
+//   background: #ece9e2;
+// }
+
+// .envelope-body::before {
+//   left: 0;
+
+//   clip-path: polygon(
+//     0 100%,
+//     100% 0,
+//     100% 100%
+//   );
+// }
+
+// .envelope-body::after {
+//   right: 0;
+
+//   clip-path: polygon(
+//     0 0,
+//     100% 100%,
+//     0 100%
+//   );
+// }
+
+// /* Top flap */
+
+// .envelope-flap {
+//   position: absolute;
+
+//   top: 0;
+//   left: 0;
+
+//   width: 100%;
+//   height: 58%;
+
+//   background: #faf8f3;
+
+//   clip-path: polygon(
+//     0 0,
+//     100% 0,
+//     50% 100%
+//   );
+
+//   box-shadow: 0 8px 15px rgba(0,0,0,.12);
+
+//   z-index: 2;
+
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .invite-text {
+//   text-align: center;
+//   font-family: "Beau Rivage", cursive;
+//   font-size: clamp(1.5rem, 4vw, 4.5rem);
+//   line-height: 1;
+//   color: #2e2e2e;
+//   margin-top: -20px;
+
+//   span {
+//     display: block;
+//     font-size: 0.6em;
+//     margin: 4px 0;
+//   }
+// }
+
+// /* Wax seal */
+
+// .wax-seal {
+//   position: absolute;
+
+//   left: 50%;
+//   top: 58%;
+
+//   transform: translate(-50%, -50%);
+
+//   width: 90px;
+//   height: 90px;
+
+//   border-radius: 50%;
+
+//   background: #d9d4c8;
+
+//   border: 4px solid #c7c0b1;
+
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   font-family: "Cormorant Garamond", serif;
+//   font-size: 2rem;
+
+//   color: #666;
+
+//   box-shadow:
+//     0 5px 12px rgba(0,0,0,.18);
+
+//   z-index: 3;
+// }
+
+// /* Click text */
+
+// .click-text {
+//   margin-top: 40px;
+
+//   font-size: 12px;
+
+//   letter-spacing: .4em;
+
+//   color: #8a8a8a;
+// }
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap");
+
+.opening {
+  min-height: 100vh;
+  background: linear-gradient(
+      rgba(248, 244, 238, 0.92),
+      rgba(248, 244, 238, 0.92)
+    ),
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.opening-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left,
+      rgba(92, 72, 48, 0.08),
+      transparent 40%),
+    radial-gradient(circle at bottom right,
+      rgba(92, 72, 48, 0.08),
+      transparent 40%);
+}
+
+.opening-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  letter-spacing: 8px;
+  color: #8b7765;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.couple-name {
+  font-family: "Bickham Script Pro", "Edwardian Script ITC", cursive;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 400;
+  color: #3c3025;
+  margin: 0;
+  line-height: 1;
+
+  span {
+    margin: 0 12px;
+  }
+}
+
+.divider {
+  width: 180px;
+  height: 1px;
+  background: #b9a896;
+  margin: 2rem auto 3rem;
+  position: relative;
+
+  &::before {
+    content: "❦";
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f8f4ee;
+    padding: 0 12px;
+    color: #8b7765;
+    font-size: 1rem;
+  }
+}
+
+.envelope-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+
+  img {
+    width: min(520px, 85vw);
+    display: block;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.18));
+  }
+
+  &:hover img {
+    transform: translateY(-10px) scale(1.03);
+    filter: drop-shadow(0 28px 45px rgba(0, 0, 0, 0.25));
+  }
+}
+
+.click-text {
+  margin-top: 1.8rem;
+  letter-spacing: 6px;
+  color: #8b7765;
+  font-size: 0.9rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .subtitle {
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+  }
+
+  .couple-name {
+    font-size: 4rem;
+  }
+
+  .divider {
+    width: 120px;
+  }
+
+  .click-text {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+  }
+}

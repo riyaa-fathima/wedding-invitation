@@ -1,0 +1,13 @@
+@import "bootstrap/scss/bootstrap";
+
+@import "abstracts/variables";
+@import "abstracts/animations";
+
+@import "base/global";
+@import "base/typography";
+
+@import "components/opening";
+@import "components/hero";
+@import "components/details";
+@import "components/quote";
+@import "components/closing";

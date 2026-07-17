@@ -1,0 +1,137 @@
+.welcome {
+  min-height: 100vh;
+  background: #f7f2eb;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.polaroid-container {
+  position: relative;
+  width: 320px;
+  margin: 0 auto 70px;
+  height: 280px;
+}
+
+.polaroid {
+  position: absolute;
+  background: #fff;
+  padding: 12px 12px 45px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+.polaroid:hover {
+  transform: translateY(-8px);
+}
+
+.polaroid img {
+  width: 180px;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid-left {
+  left: 0;
+  transform: rotate(-8deg);
+  z-index: 2;
+}
+
+.polaroid-right {
+  right: 0;
+  top: 40px;
+  transform: rotate(8deg);
+}
+
+.welcome-content {
+  max-width: 700px;
+  margin: auto;
+}
+
+.divider {
+  font-size: 24px;
+  color: #7a6652;
+  margin-bottom: 25px;
+}
+
+.message {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #5f554d;
+  margin-bottom: 30px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.quote {
+  font-style: italic;
+  color: #7a6652;
+  margin-bottom: 35px;
+  font-size: 1.2rem;
+}
+
+.with-love {
+  display: block;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  color: #8b7355;
+  font-size: 14px;
+}
+
+h2 {
+  font-family: "Bickham Script Pro", cursive;
+  font-size: 5rem;
+  color: #4f4339;
+  font-weight: 400;
+}
+.memory-frame {
+  position: relative;
+  width: 320px;
+  margin: 0 auto 40px;
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+.music-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+
+  background: #6f4e37;
+  color: white;
+  cursor: pointer;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.song-title {
+  display: block;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  color: #8b7355;
+}
+
+.heading {
+  font-family:
+    "Bickham Script Pro", "Edwardian Script ITC", "Snell Roundhand", cursive;
+
+  font-size: clamp(1.5rem, 5vw, 8rem);
+  font-weight: 200;
+  line-height: 1;
+  color: #3c3025;
+}
+.names{ font-family:
+      "Bickham Script Pro", "Edwardian Script ITC", "Snell Roundhand", cursive;
+
+    font-size: clamp(1.5rem, 4vw, 6rem);
+    font-weight: 100;
+    line-height: 1;
+    color: #3c3025;}

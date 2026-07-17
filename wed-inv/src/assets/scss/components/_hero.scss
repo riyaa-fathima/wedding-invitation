@@ -1,0 +1,118 @@
+.hero {
+  min-height: 100vh;
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(111, 90, 67, 0.05),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(111, 90, 67, 0.05),
+      transparent 30%
+    ),
+    #f8f4ee;
+
+  overflow: hidden;
+  .monogram {
+    width: 92px;
+    height: 50px;
+    margin-bottom: 40px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    path,
+    line {
+      fill: none;
+      stroke: $sage;
+      stroke-width: 1;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: draw 1.8s ease forwards;
+    }
+
+    .clay {
+      stroke: $clay;
+      animation-delay: 0.3s;
+    }
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #8b7765;
+    margin-bottom: 35px;
+  }
+
+  .names {
+    font-family:
+      "Bickham Script Pro", "Edwardian Script ITC", "Snell Roundhand", cursive;
+
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 400;
+    line-height: 1;
+    color: #3c3025;
+
+    .amp {
+      display: block;
+      font-size: 0.45em;
+      color: #8b7765;
+      margin: 10px 0;
+      font-style: italic;
+    }
+  }
+
+  .date-line {
+    margin-top: 30px;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: #6d5b4c;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $ink-soft;
+    opacity: 0.7;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+
+    background: url("/floral-top-left.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    opacity: 0.12;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    height: 320px;
+
+    background: url("/floral-bottom-right.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    opacity: 0.12;
+  }
+}
