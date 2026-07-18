@@ -1,46 +1,116 @@
 .closing {
   min-height: 100vh;
+  min-height: 100svh;
   position: relative;
   background: $bg;
+  padding: clamp(60px, 12vw, 100px) clamp(1.25rem, 5vw, 2rem) clamp(80px, 15vw, 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
   .closing-text {
     font-family: "Fraunces", serif;
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.15rem, 3.5vw, 2rem);
     font-style: italic;
     font-weight: 300;
     line-height: 1.6;
     max-width: 550px;
     margin: 0 auto;
     color: $ink;
+
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+    animation-delay: 0.1s;
   }
 
   .couple-logo {
     display: block;
-    width: 180px;
+    width: clamp(110px, 20vw, 180px);
     max-width: 40vw;
 
-    margin: 50px auto 30px;
+    margin: clamp(30px, 6vw, 50px) auto clamp(18px, 4vw, 30px);
 
-    opacity: 0.95;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards, breathe 4s ease-in-out infinite;
+    animation-delay: 0.4s, 1.3s;
   }
 
   .signatures {
     margin-top: 1rem;
     font-family: "Cormorant Garamond", serif;
-    font-size: 1.6rem;
+    font-size: clamp(1.15rem, 3vw, 1.6rem);
     color: $sage;
+
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+    animation-delay: 0.65s;
   }
 
   .closing-footer {
     position: absolute;
-    bottom: 30px;
+    bottom: clamp(16px, 4vw, 30px);
     left: 0;
     width: 100%;
     text-align: center;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: $ink-soft;
+    opacity: 0;
+    padding: 0 1rem;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.9s;
+  }
+
+  // Very short viewports: footer can crowd the content above it
+  @media (max-height: 600px) {
+    .closing-footer {
+      position: static;
+      margin-top: clamp(30px, 6vw, 50px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .closing-text,
+    .couple-logo,
+    .signatures,
+    .closing-footer {
+      animation: none;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 0.6;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
   }
 }

@@ -1,6 +1,13 @@
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(24px, 6vw, 60px);
 
   background:
     radial-gradient(
@@ -16,10 +23,11 @@
     #f8f4ee;
 
   overflow: hidden;
+
   .monogram {
-    width: 92px;
-    height: 50px;
-    margin-bottom: 40px;
+    width: clamp(64px, 12vw, 92px);
+    height: clamp(35px, 6.5vw, 50px);
+    margin-bottom: clamp(20px, 5vw, 40px);
 
     svg {
       width: 100%;
@@ -43,76 +51,157 @@
   }
 
   .eyebrow {
-    font-size: 13px;
-    letter-spacing: 8px;
+    font-size: clamp(10px, 1.6vw, 13px);
+    letter-spacing: clamp(3px, 1.2vw, 8px);
     text-transform: uppercase;
     color: #8b7765;
-    margin-bottom: 35px;
+    margin-bottom: clamp(18px, 4vw, 35px);
+
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+    animation-delay: 0.6s;
   }
 
   .names {
     font-family:
       "Bickham Script Pro", "Edwardian Script ITC", "Snell Roundhand", cursive;
 
-    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-size: clamp(2.75rem, 12vw, 8rem);
     font-weight: 400;
     line-height: 1;
     color: #3c3025;
+    max-width: 90vw;
+
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.85s;
 
     .amp {
       display: block;
       font-size: 0.45em;
       color: #8b7765;
-      margin: 10px 0;
+      margin: clamp(6px, 2vw, 10px) 0;
       font-style: italic;
     }
   }
 
   .date-line {
-    margin-top: 30px;
-    font-size: 15px;
-    letter-spacing: 3px;
+    margin-top: clamp(18px, 4vw, 30px);
+    font-size: clamp(11px, 1.4vw, 15px);
+    letter-spacing: clamp(1.5px, 0.6vw, 3px);
     color: #6d5b4c;
+
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+    animation-delay: 1.2s;
   }
 
   .scroll-cue {
     position: absolute;
-    bottom: 40px;
+    bottom: clamp(20px, 4vw, 40px);
     left: 50%;
     transform: translateX(-50%);
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: $ink-soft;
-    opacity: 0.7;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards, bob 2.4s ease-in-out infinite;
+    animation-delay: 1.5s, 2.4s;
   }
-  .hero::before {
+
+  &::before,
+  &::after {
     content: "";
     position: absolute;
+    width: clamp(140px, 25vw, 320px);
+    height: clamp(140px, 25vw, 320px);
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  &::before {
     top: 0;
     left: 0;
-    width: 320px;
-    height: 320px;
-
-    background: url("/floral-top-left.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    opacity: 0.12;
+    background-image: url("/floral-top-left.png");
   }
 
-  .hero::after {
-    content: "";
-    position: absolute;
+  &::after {
     bottom: 0;
     right: 0;
-    width: 320px;
-    height: 320px;
+    background-image: url("/floral-bottom-right.png");
+  }
 
-    background: url("/floral-bottom-right.png");
-    background-size: contain;
-    background-repeat: no-repeat;
+  // Small phones: tighter type scale + tighter decoration
+  @media (max-width: 400px) {
+    padding: 20px;
 
-    opacity: 0.12;
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+    }
+
+    .names {
+      font-size: clamp(1.25rem, 9vw, 2rem);
+    }
+
+    .date-line {
+      font-size: 10.5px;
+      letter-spacing: 1.5px;
+    }
+
+    &::before,
+    &::after {
+      width: 110px;
+      height: 110px;
+      opacity: 0.08;
+    }
+  }
+
+  // Landscape phones / short viewports
+  @media (max-height: 500px) and (orientation: landscape) {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .monogram path,
+    .monogram line {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+
+    .eyebrow,
+    .names,
+    .date-line,
+    .scroll-cue {
+      animation: none;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
   }
 }

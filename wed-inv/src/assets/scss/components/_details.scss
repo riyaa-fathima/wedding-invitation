@@ -1,79 +1,169 @@
 .details {
-  min-height: 100vh;
   background: $bg;
+  text-align: center;
+  padding: clamp(3.5rem, 8vw, 7rem) 0;
+}
 
-  .details-title {
-    font-family: "Fraunces", serif;
-    font-size: clamp(2rem, 5vw, 2.5rem);
-    font-weight: 400;
-    margin-bottom: 3.5rem;
-    text-align: center;
+.details-title {
+  font-family: "Bickham Script Pro", "Edwardian Script ITC", cursive;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 400;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  color: $ink;
+  padding: 0 1rem;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+// Grid wrapper for the detail items — adjust if you already
+// have a container class handling this layout elsewhere.
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(2rem, 6vw, 3.5rem) clamp(1.5rem, 4vw, 2rem);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+.detail-item {
+  padding: 0;
+
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: 0.25s;
+
+  // stagger each item if they're siblings in the grid
+  &:nth-child(2) {
+    animation-delay: 0.4s;
   }
+  &:nth-child(3) {
+    animation-delay: 0.55s;
+  }
+  &:nth-child(4) {
+    animation-delay: 0.7s;
+  }
+  &:nth-child(5) {
+    animation-delay: 0.85s;
+  }
+}
 
-  .detail-grid {
-    display: flex;
-    flex-direction: column;
+.detail-icon {
+  width: clamp(90px, 20vw, 150px);
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+  transition: transform 0.35s ease;
+}
+
+.detail-item:hover .detail-icon {
+  transform: translateY(-4px);
+}
+
+.detail-item h3 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  color: $ink;
+  margin-bottom: 0.5rem;
+}
+
+.detail-item p {
+  color: $ink-soft;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.8;
+  padding: 0 0.5rem;
+}
+
+.location-link {
+  display: inline-block;
+  position: relative;
+  margin-top: 1rem;
+  color: $clay;
+  text-decoration: none;
+  padding-bottom: 3px;
+  transition: 0.3s;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+
+  // animated underline instead of instant opacity shift
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s ease;
+  }
+}
+
+.location-link:hover {
+  opacity: 0.85;
+
+  &::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.divider {
+  width: clamp(80px, 20vw, 120px);
+  height: 1px;
+  background: $line;
+  margin: 0 auto;
+
+  transform: scaleX(0);
+  animation: drawLine 0.9s ease forwards;
+  animation-delay: 0.1s;
+}
+
+// Single-column stack on very small screens for breathing room
+@media (max-width: 400px) {
+  .details-grid {
+    grid-template-columns: 1fr;
     gap: 2.5rem;
-    margin-bottom: 3rem;
+  }
+  .location-link {
+    padding-bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details-title,
+  .detail-item,
+  .divider {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 
-  .detail {
-    padding-bottom: 2rem;
-    border-bottom: 1px solid $line;
-
-    &:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
+  .detail-icon {
+    transition: none;
   }
 
-  .detail-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: $sage;
-    margin-bottom: 0.75rem;
+  .location-link::after {
+    transition: none;
   }
+}
 
-  .detail-value {
-    font-family: "Fraunces", serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: $ink;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
-
-  .detail-sub {
-    margin-top: 0.5rem;
-    font-size: 0.95rem;
-    color: $ink-soft;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .map-frame {
-    margin-top: 3rem;
-    border: 1px solid $line;
-    overflow: hidden;
-
-    iframe {
-      display: block;
-      width: 100%;
-    }
+@keyframes drawLine {
+  from {
+    transform: scaleX(0);
   }
-
-  .note-box {
-    margin-top: 2rem;
-    padding: 2rem;
-    border: 1px solid $line;
-    text-align: left;
-
-    .detail-label {
-      color: $clay;
-      margin-bottom: 1rem;
-    }
-
-    p:last-child {
-      color: $ink-soft;
-      line-height: 1.8;
-      margin: 0;
-    }
+  to {
+    transform: scaleX(1);
   }
 }

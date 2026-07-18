@@ -1,24 +1,30 @@
 .welcome {
   min-height: 100vh;
-  background: #f7f2eb;
-  padding: 80px 20px;
+  min-height: 100svh;
+  background: $bg;
+  padding: clamp(48px, 10vw, 80px) clamp(16px, 5vw, 20px);
   text-align: center;
 }
 
+// --- Polaroids ---
 .polaroid-container {
   position: relative;
-  width: 320px;
-  margin: 0 auto 70px;
-  height: 280px;
+  width: min(320px, 85vw);
+  margin: 0 auto clamp(40px, 8vw, 70px);
+  height: clamp(220px, 60vw, 280px);
 }
 
 .polaroid {
   position: absolute;
   background: #fff;
-  padding: 12px 12px 45px;
+  padding: clamp(8px, 2vw, 12px) clamp(8px, 2vw, 12px) clamp(32px, 8vw, 45px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
-  transition: 0.4s;
+  transition: transform 0.4s, box-shadow 0.4s;
+  width: clamp(130px, 40vw, 180px);
+
+  opacity: 0;
+  animation: polaroidIn 0.8s cubic-bezier(0.25, 0.9, 0.35, 1) forwards;
 }
 
 .polaroid:hover {
@@ -26,8 +32,8 @@
 }
 
 .polaroid img {
-  width: 180px;
-  height: 220px;
+  width: 100%;
+  height: clamp(160px, 48vw, 220px);
   object-fit: cover;
   display: block;
 }
@@ -36,102 +42,220 @@
   left: 0;
   transform: rotate(-8deg);
   z-index: 2;
+  animation-delay: 0.1s;
+  --rot: -8deg;
+}
+
+.polaroid-left:hover {
+  transform: rotate(-8deg) translateY(-8px);
 }
 
 .polaroid-right {
   right: 0;
-  top: 40px;
+  top: clamp(24px, 6vw, 40px);
   transform: rotate(8deg);
+  animation-delay: 0.35s;
+  --rot: 8deg;
 }
 
+.polaroid-right:hover {
+  transform: rotate(8deg) translateY(-8px);
+}
+
+// --- Content ---
 .welcome-content {
   max-width: 700px;
   margin: auto;
+  padding: 0 clamp(0px, 2vw, 16px);
 }
 
 .divider {
-  font-size: 24px;
+  font-size: clamp(18px, 3vw, 24px);
   color: #7a6652;
-  margin-bottom: 25px;
+  margin-bottom: clamp(18px, 4vw, 25px);
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+
+h2 {
+  font-family: "Bickham Script Pro", cursive;
+  font-size: clamp(2.5rem, 9vw, 5rem);
+  color: #4f4339;
+  font-weight: 400;
+
+  opacity: 0;
+  animation: fadeUp 0.9s ease forwards;
+  animation-delay: 0.75s;
 }
 
 .message {
-  font-size: 1.1rem;
-  line-height: 2;
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  line-height: 1.9;
   color: #5f554d;
-  margin-bottom: 30px;
+  margin-bottom: clamp(20px, 4vw, 30px);
   font-family: "Cormorant Garamond", serif;
+
+  opacity: 0;
+  animation: fadeUp 0.9s ease forwards;
+  animation-delay: 0.95s;
 }
 
 .quote {
   font-style: italic;
   color: #7a6652;
-  margin-bottom: 35px;
-  font-size: 1.2rem;
+  margin-bottom: clamp(24px, 5vw, 35px);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  padding: 0 clamp(0px, 3vw, 20px);
+
+  opacity: 0;
+  animation: fadeUp 0.9s ease forwards;
+  animation-delay: 1.15s;
 }
 
 .with-love {
   display: block;
-  letter-spacing: 4px;
-  margin-bottom: 20px;
+  letter-spacing: clamp(2px, 0.8vw, 4px);
+  margin-bottom: clamp(14px, 3vw, 20px);
   color: #8b7355;
-  font-size: 14px;
+  font-size: clamp(11px, 1.8vw, 14px);
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 1.35s;
 }
 
-h2 {
-  font-family: "Bickham Script Pro", cursive;
-  font-size: 5rem;
-  color: #4f4339;
-  font-weight: 400;
-}
+// --- Memory frame / music player ---
 .memory-frame {
   position: relative;
-  width: 320px;
-  margin: 0 auto 40px;
+  width: min(320px, 85vw);
+  margin: 0 auto clamp(24px, 5vw, 40px);
+
+  opacity: 0;
+  animation: fadeUp 0.9s ease forwards;
+  animation-delay: 0.2s;
 
   img {
     width: 100%;
     display: block;
+    border-radius: 3px;
   }
 }
 
 .music-btn {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: clamp(10px, 3vw, 20px);
+  bottom: clamp(10px, 3vw, 20px);
 
-  width: 55px;
-  height: 55px;
+  width: clamp(42px, 8vw, 55px);
+  height: clamp(42px, 8vw, 55px);
   border-radius: 50%;
   border: none;
+  flex-shrink: 0;
 
   background: #6f4e37;
   color: white;
   cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.music-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+}
+
+.music-btn.playing {
+  animation: pulseRing 1.6s ease-out infinite;
+}
+
 .song-title {
   display: block;
-  margin-bottom: 10px;
-  letter-spacing: 3px;
+  margin-bottom: clamp(6px, 2vw, 10px);
+  letter-spacing: clamp(1.5px, 0.6vw, 3px);
   color: #8b7355;
+  font-size: clamp(12px, 1.8vw, 14px);
 }
 
 .heading {
   font-family:
     "Bickham Script Pro", "Edwardian Script ITC", "Snell Roundhand", cursive;
 
-  font-size: clamp(1.5rem, 5vw, 8rem);
+  font-size: clamp(1.75rem, 6vw, 8rem);
   font-weight: 200;
   line-height: 1;
   color: #3c3025;
+  padding: 0 12px;
 }
-.names{ font-family:
-      "Bickham Script Pro", "Edwardian Script ITC", "Snell Roundhand", cursive;
 
-    font-size: clamp(1.5rem, 4vw, 6rem);
-    font-weight: 100;
-    line-height: 1;
-    color: #3c3025;}
+.names {
+  font-family:
+    "Bickham Script Pro", "Edwardian Script ITC", "Snell Roundhand", cursive;
+
+  font-size: clamp(1.75rem, 5vw, 6rem);
+  font-weight: 100;
+  line-height: 1;
+  color: #3c3025;
+  padding: 0 12px;
+}
+
+// Extra-small phones: polaroids get tight, drop the overlap offset a touch
+@media (max-width: 340px) {
+  .polaroid-container {
+    height: 240px;
+  }
+
+  .polaroid-right {
+    top: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .polaroid,
+  .divider,
+  h2,
+  .message,
+  .quote,
+  .with-love,
+  .memory-frame {
+    animation: none;
+    opacity: 1;
+  }
+
+  .music-btn.playing {
+    animation: none;
+  }
+}
+
+@keyframes polaroidIn {
+  from {
+    opacity: 0;
+    transform: rotate(var(--rot)) translateY(30px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(var(--rot)) translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(111, 78, 55, 0.5);
+  }
+  100% {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 0 14px rgba(111, 78, 55, 0);
+  }
+}
