@@ -16,10 +16,6 @@ export default function Closing() {
           className="couple-logo"
         />
 
-        <p className="signatures">
-          {wedding.partnerOne} &amp; {wedding.partnerTwo}
-        </p>
-
       </div>
 
       <footer className="closing-footer">
