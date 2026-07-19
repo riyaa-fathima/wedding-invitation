@@ -34,17 +34,16 @@ export default function Quote() {
       <h2 className="heading">A Love Written In Time</h2>
 
       <div className="story">
-        <p>
-          As we step into this new chapter, it would mean so much to have you by
-          our side on our special day.
-        </p>
+        <p>Two hearts, one promise, and a lifetime ahead.</p>
 
         <p>
-          On this page you'll discover everything you need — the schedule, venue
-          details,and a few extra touches.
+          By the grace of Allah and with the blessings of our families, we
+          invite you to join us as we unite in marriage. As we begin this
+          beautiful journey together, we would be delighted to celebrate this
+          special moment with those who mean the most to us.
         </p>
 
-        <p>Here's to love, joy and the beginning of our forever.</p>
+        <p>We eagerly await the joy of your presence and the warmth of your blessings on our wedding day.</p>
       </div>
 
       <span className="with-love">WITH LOVE</span>

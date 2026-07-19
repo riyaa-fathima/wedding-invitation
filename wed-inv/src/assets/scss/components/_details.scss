@@ -77,10 +77,10 @@
 .location-link {
   display: inline-block;
   position: relative;
-  margin-top: 1rem;
+  // margin-top: 1rem;
   color: $clay;
   text-decoration: none;
-  padding-bottom: 3px;
+  padding-bottom: 9px;
   transition: 0.3s;
   font-size: clamp(0.9rem, 2vw, 1rem);
 

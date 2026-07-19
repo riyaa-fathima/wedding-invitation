@@ -45,6 +45,7 @@ export default function Details() {
 
           <p>{wedding.reception.time}</p>
         </div>
+        <div className="divider"></div>
       </div>
     </section>
   );
