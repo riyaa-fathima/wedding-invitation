@@ -229,16 +229,16 @@ h2 {
   }
 }
 
-@keyframes polaroidIn {
-  from {
-    opacity: 0;
-    transform: rotate(var(--rot)) translateY(30px) scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(var(--rot)) translateY(0) scale(1);
-  }
-}
+// @keyframes polaroidIn {
+//   from {
+//     opacity: 0;
+//     transform: rotate(var(--rot)) translateY(30px) scale(0.92);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: rotate(var(--rot)) translateY(0) scale(1);
+//   }
+// }
 
 @keyframes fadeUp {
   from {
